@@ -4,3 +4,7 @@ Sort lignes ASC
 splite ligne in signle file by size
 save any splite numbre in a sigle file
 merge multiple file and remove duplicate splite and sort them a sigle file 
+
+git clone https://github.com/tighspammer/ziko.git
+cd ziko
+python ziko.py

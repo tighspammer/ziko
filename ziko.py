@@ -109,16 +109,20 @@ def split_and_save(input_file):
     
     total_lines = len(lines)
     chunk_size = int(input("Enter the Number of ligne to separate : "))
+    NFILE = str(input("Enter name to commence File ex : KHA.TXT: "))
+    NNBRE = int(input("Enter name to commence numbre ex : 000.TXT: "))
     num_chunks = (total_lines // chunk_size) + 1
     try:
         for i in range(num_chunks):
             start = i * chunk_size
             end = min((i + 1) * chunk_size, total_lines)
             chunk_lines = lines[start:end]
-            output_file = os.path.join(output_folder, f"{i+1}.txt")
+            output_file = os.path.join(output_folder, f"{NFILE}{NNBRE}.txt")
             with open(output_file, 'w', encoding='utf-8') as f:
                 f.writelines(chunk_lines)
-                print(f'{cyan("Spliting and saving file [")}{output_folder}/{i+1}.txt{cyan("]")} > {yellow("successfully")}.')
+                print(f'{cyan("Spliting and saving file [")}{output_folder}/{NFILE}{i+1}.txt{cyan("]")} > {yellow("successfully")}.')
+                print(f'{cyan("Spliting and saving file [")}{NNBRE}.')
+                NNBRE = NNBRE+1
         print(f"{cyan('================= Job Done ==================')}")
         Options()
     except Exception:

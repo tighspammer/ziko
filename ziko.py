@@ -128,12 +128,54 @@ def split_and_save(input_file):
     except Exception:
         print(f"Error saving file: {red(input_file)}\n")
 
+def create_txt_file_in_folder():
+    # Prompt the user for a list of numbers
+    print("Enter a list of names. After each number, press Enter. When done, press Enter on an empty line.")
+    numbers = []
+    while True:
+        number = input()
+        if number == "" or number == " ":
+            break
+        numbers.append(number)
+    
+    # Display the list of numbers to the user
+    print("\nYou have entered the following NAMES:")
+    for number in numbers:
+        print(yellow(number))
+    
+    # Prompt the user for the folder path
+    folder_path = input("\nEnter the full path of the folder where you want to save the text files: ")
+    
+    # Ensure the folder exists; if not, create it
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+    
+    # Create a text file for each number in the list
+    for number in numbers:
+        file_name = f"{number}.txt"
+        file_path = os.path.join(folder_path, file_name)
+        
+        # Create a file and write the number into it
+        with open(file_path, 'w') as file:
+            file.write(f"{number}\n")
+    print(f"\nText files with names have been created in the folder '{yellow(folder_path)}'.")
+    print(f"\n{yellow("================ D O N E ==================")}")
+    Options()
+
 def RunOption1():
     # Step 1: Remove duplicates from input_file
     remove_duplicates()
 
 def RunOption2():
-    print('option 02')
+    merge_txt_files()
+
+def RunOption3():
+    print("Options 4")
+    create_txt_file_in_folder()
+
+def RunOption4():
+    print("Options 5")
+
 
 def delete_files_in_folder(folder_path):
     try:
@@ -152,13 +194,20 @@ def delete_files_in_folder(folder_path):
     except Exception as e:
         print(f"Failed to delete files in {folder_path}: {e}")
 def Options():
-    print(f"{yellow('[')}{red(1)}{yellow(']')} Sort / Remove duplicate and Splite File:")
-    print(f"{yellow('[')}{green(2)}{yellow(']')} Merge All txt file and run option {yellow('[')}{red(1)}{yellow(']')}:")
+    print(f"{yellow('[')}{green(1)}{yellow(']')} Sort / Remove duplicate and Splite File : ")
+    print(f"{yellow('[')}{green(2)}{yellow(']')} Merge All txt file and run option {yellow('[')}{red(1)}{yellow(']')}: ")
+    print(f"{yellow('[')}{green(3)}{yellow(']')} Create Empty txt Files from Ids : ")
+    print(f"{yellow('[')}{green(4)}{yellow(']')} Exit / END ")
     option = input("Chose option : ")
     if option== "1" or option == "01":
         RunOption1()
     elif option== "2" or option == "02":
-        merge_txt_files()
+        RunOption2()
+    elif option== "3" or option == "03":
+        RunOption3()
+    elif option== "4" or option == "04" or option == "e":
+        print(f"{yellow('=================== By See You Next Time ;) ==========================')}")
+        exit()
     else:
         print(f"{red('Options invalid')}\n")
         Options()

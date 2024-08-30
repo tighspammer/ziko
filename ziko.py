@@ -159,7 +159,7 @@ def create_txt_file_in_folder():
         with open(file_path, 'w') as file:
             file.write(f"{number}\n")
     print(f"\nText files with names have been created in the folder '{yellow(folder_path)}'.")
-    print(f"\n{yellow("================ D O N E ==================")}")
+    print(f"\n{yellow('================ D O N E ==================')}")
     Options()
 
 def RunOption1():
